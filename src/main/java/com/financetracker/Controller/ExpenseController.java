@@ -22,4 +22,17 @@ public class ExpenseController {
     public ResponseEntity<Expense> createExpense(@RequestBody Expense expense){
         return ResponseEntity.ok(expenseService.createExpense(expense));
     }
+
+    @PutMapping("update/{id}")
+    public ResponseEntity<?> updateExpense(@RequestBody Expense expense, @PathVariable String id){
+        Expense updatedExpense = expenseService.updateExpense(id, expense);
+        if(updatedExpense == null){
+            return ResponseEntity.notFound().build();
+        }return ResponseEntity.ok(updatedExpense);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteExpense(@PathVariable("id") String id) {
+        expenseService.deleteExpenseById(id);
+    }
 }

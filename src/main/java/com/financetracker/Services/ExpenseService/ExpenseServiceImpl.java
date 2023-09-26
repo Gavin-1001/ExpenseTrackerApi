@@ -41,9 +41,7 @@ public class ExpenseServiceImpl implements ExpenseService{
         }
 
         //expense price
-        if(Objects.nonNull(expense.getPrice())){
-            updatedExpense.setPrice(expense.getPrice());
-        }
+        updatedExpense.setPrice(expense.getPrice());
 
         //expense date
         if(Objects.nonNull(expense.getDateCreated())){

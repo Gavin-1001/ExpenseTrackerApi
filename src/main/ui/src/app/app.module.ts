@@ -6,20 +6,35 @@ import { AppComponent } from './app.component';
 import {FooterComponent} from "./navigation/footer/footer.component";
 import {SidenavComponent} from "./navigation/sidenav/sidenav.component";
 import {ToolbarComponent} from "./navigation/toolbar/toolbar.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from "@angular/material/button";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {CommonModule} from "@angular/common";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FooterComponent,
-    SidenavComponent,
-    ToolbarComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        FooterComponent,
+        SidenavComponent,
+        ToolbarComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatInputModule,
+        MatSelectModule,
+        CommonModule
+    ],
+    providers: [],
+    exports: [
+        SidenavComponent
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

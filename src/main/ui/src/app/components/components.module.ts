@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import {RegisterComponent} from "../auth/register/register.component";
 import {FormComponent} from "./form/form.component";
+import {AppModule} from "../app.module";
 
 @NgModule({
   declarations: [
@@ -14,9 +15,10 @@ import {FormComponent} from "./form/form.component";
     FormComponent,
     RegisterComponent,
   ],
-  imports: [
-    CommonModule,
-    ComponentsRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        ComponentsRoutingModule,
+        // AppModule
+    ]
 })
 export class ComponentsModule { }

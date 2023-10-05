@@ -1,18 +1,23 @@
-<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value">
+<mat-drawer-container class="example-container">
     <mat-drawer #drawer>I'm a drawer</mat-drawer>
     <mat-drawer-content>
-            <mat-label>Sidenav mode</mat-label>
 
-        <button (click)="myFunc()">CLICK ME</button>
-        <mat-form-field>
-            <mat-label>Has backdrop</mat-label>
-            <mat-select #hasBackdrop>
-                <mat-option>Unset</mat-option>
-                <mat-option [value]="true">True</mat-option>
-                <mat-option [value]="false">False</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
+
+        <button mat-icon-button color="primary" (click)="myFunc()" aria-label="Example icon button with a home icon">
+            <mat-icon>home</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="myFunc()" aria-label="Example icon button with a menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+
+        <mat-icon svgIcon="cog" aria-hidden="false" (click)="myFunc()"
+                  aria-label="Example thumbs up SVG icon"></mat-icon>
+
+        <span class="material-symbols-outlined">
+            settings
+        </span>
 
     </mat-drawer-content>
 </mat-drawer-container>

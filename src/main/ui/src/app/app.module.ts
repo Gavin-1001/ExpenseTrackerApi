@@ -12,6 +12,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {CommonModule} from "@angular/common";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {CommonModule} from "@angular/common";
         MatSidenavModule,
         MatInputModule,
         MatSelectModule,
-        CommonModule
+        CommonModule,
+        MatIconModule
     ],
     providers: [],
     exports: [

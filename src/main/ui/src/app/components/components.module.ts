@@ -18,6 +18,7 @@ import {AppModule} from "../app.module";
     imports: [
         CommonModule,
         ComponentsRoutingModule,
+        //AppModule,
         // AppModule
     ]
 })

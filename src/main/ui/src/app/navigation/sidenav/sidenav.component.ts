@@ -21,6 +21,7 @@ export class SidenavComponent {
 
 
 
+
     constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
         // Note that we provide the icon here as a string literal here due to a limitation in
         // Stackblitz. If you want to provide the icon from a URL, you can use:
@@ -34,6 +35,11 @@ export class SidenavComponent {
     myFuncT(){
         console.log("TESTAASDd")
     }
+    
+    returnHome(){
+
+    }
+
 
     showFiller = false;
 }

@@ -42,4 +42,8 @@ export class SidenavComponent {
 
 
     showFiller = false;
+
+    myFunc() {
+
+    }
 }

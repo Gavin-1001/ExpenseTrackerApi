@@ -1,0 +1,43 @@
+/* Sidebar.css */
+.custom-sidebar {
+    color: white;
+    width: 120px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    background-color: #1f1f1f;
+    border: 1px solid black;
+    border-radius: 0 19px 19px 0
+}
+
+.sidebar-container {
+    display: contents; /* This makes the container behave as if it doesn't exist for layout purposes */
+}
+
+.custom-sidebar .sidebar-header {
+    background-color: inherit;
+    padding: 20px;
+    text-align: center;
+}
+
+.custom-sidebar .list-unstyled {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.custom-sidebar .list-unstyled li {
+    padding: 10px;
+}
+
+.custom-sidebar .list-unstyled li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Push the "Services" link to the bottom */
+.custom-sidebar .list-unstyled .bottom-link {
+    margin-top: auto;
+}

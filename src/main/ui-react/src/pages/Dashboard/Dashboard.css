@@ -1,0 +1,29 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four equal-width columns */
+    grid-gap: 50px; /* Spacing between items */
+}
+
+.sevenDayPurchases {
+    width: 175px;
+    height: 175px;
+    background-color: #ccc;
+    text-align: center;
+    line-height: 100px;
+    margin-top: 12rem;
+    border-radius: 19px 19px 19px 19px
+}
+
+
+
+
+.sevenDayPurchasesBig {
+    width: 250px;
+    height: 350px;
+    background-color: #ccc;
+    text-align: center;
+    /*line-height: 100px;*/
+    margin-top: 7.25rem;
+    border-radius: 19px 19px 19px 19px
+}
+

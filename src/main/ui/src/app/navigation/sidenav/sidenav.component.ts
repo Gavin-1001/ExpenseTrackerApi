@@ -28,14 +28,14 @@ export class SidenavComponent {
         // `iconRegistry.addSvgIcon('thumbs-up', sanitizer.bypassSecurityTrustResourceUrl('icon.svg'));`
         iconRegistry.addSvgIconLiteral('cog', sanitizer.bypassSecurityTrustHtml(cog));
     }
-    myFunc(){
-        console.log("TEST")
+    modalSettings(){
+        this.modalSettings()
     }
 
     myFuncT(){
         console.log("TESTAASDd")
     }
-    
+
     returnHome(){
 
     }

@@ -8,12 +8,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {RegisterComponent} from "../auth/register/register.component";
 import {FormComponent} from "./form/form.component";
 import {AppModule} from "../app.module";
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     FormComponent,
     RegisterComponent,
+    ModalComponent,
   ],
     imports: [
         CommonModule,

@@ -2,9 +2,19 @@ import './Dashboard.css'
 
 const Dashboard = () => {
 
-    return(
+    return (
 
         <div className="container">
+
+            <div className="title-searchcontainer">
+                <div className="title">
+                    Expense Tracker
+                </div>
+                <div className="search">
+                    <input type={"text"} placeholder={"input"} />
+                </div>
+            </div>
+
 
             <div className="sevenDayPurchases">
 
@@ -21,9 +31,10 @@ const Dashboard = () => {
                 Purchases today
                 10 purchases today
             </div>
-
-            <div className="sevenDayPurchasesBig">
-                maps
+            <div className="sevenDayPurchaseBigContainer">
+                <div className="sevenDayPurchasesBig">
+                    maps
+                </div>
             </div>
 
         </div>

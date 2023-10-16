@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import {Role} from "./common/modals/Role";
 import Sidebar from "./components/Navigation/Sidebar/Sidebar";
 import Settings from "./pages/Settings/Settings";
+import ExpenseForm from './pages/ExpenseForm/ExpenseForm';
 
 function App() {
     return (
@@ -39,6 +40,14 @@ function App() {
                              // </AuthGuard>
                         }
                     />
+
+                    <Route path="/expenseForm"
+                            element={
+                                // <AuthGuard>
+                                <ExpenseForm />
+                                // </AuthGuard>
+                            }
+                            />
 
 
                 </Routes>

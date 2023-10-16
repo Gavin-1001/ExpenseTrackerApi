@@ -2,7 +2,7 @@ import './Login.css'
 import {useEffect, useState} from "react";
 import User from "../../common/models/User";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 import {setCurrentUser} from "../../redux/store/actions/users";
 import AuthService from "../../services/AuthService.service/AuthService";
 
@@ -64,26 +64,63 @@ const Login = () => {
 
 
     return( 
-        <div className={"container"} >
-            <div className={"loginContainer"}>
-            <form onSubmit={(e) => handleLogin(e)}>
-                <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Email address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-                <button type="reset" className="btn btn-danger">Reset</button>
-                
-        </form>
-        </div>
+        <div className={"container mt-5"} >
+              <div className="card ms-auto me-auto p-3 shadow-lg custom-card">
+                <h3>Sign in</h3> {/*NoT really happy with this but style later if you get a chance*/}
+                {errorMessage && (
+                    <div className="alert alert-danger">{errorMessage}</div>
+                )}
+                <form
+                    onSubmit={(e) => handleLogin(e)}
+                    className={submitted ? "was-validated" : ""}
+                    noValidate // does not validate the form
+                >
+                    <div className="form-group">
+                        {/*USERNAME*/}
+                        <label htmlFor="username">Username</label>
+                        <input
+                            type="text"
+                            name="username"
+                            className="form-control"
+                            autoComplete="off"
+                            placeholder="Enter your username here"
+                            value={user.username}
+                            onChange={(e) => handleChange(e)}
+                            required
+                        />
+                        {/*DISPLAYS ANY ERROR MESSAGE RELATING TO FIELD*/}
+                        <div className="invalid-feedback">USERNAME IS REQUIRED!!</div>
+                    </div>
 
+                    <div className="form-group">
+                        {/*PASSWORD*/}
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            className="form-control"
+                            placeholder="Enter your password here"
+                            value={user.password}
+                            onChange={(e) => handleChange(e)}
+                            required
+                        />
+                        {/*DISPLAYS ANY ERROR MESSAGE RELATING TO FIELD*/}
+                        <div className="invalid-feedback">PASSWORD IS REQUIRED!!</div>
+                    </div>
 
+                    {/*Add the button*/}
+                    <button className="btn btn-primary w-100 mt-3">Sign in</button>
+                </form>
+                <Link
+                    to="/register"
+                    className="btn btn-link"
+                    style={{color: "darkgray"}}
+                >
+                    Create an Account??
+                </Link>
+            </div>
         </div>
-     )
+    )
 
 
 }

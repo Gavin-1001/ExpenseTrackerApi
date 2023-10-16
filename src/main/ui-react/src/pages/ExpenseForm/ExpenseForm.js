@@ -9,7 +9,7 @@ const ExpenseForm = () => {
 
     const [errorMessage, setErrorMessage] = useState("");
     const [submitted, setSubmitted] = useState(false);
-    const [expense, setExpense] = useState(new Expense("", "", "", "", ""))
+    const [expense, setExpense] = useState(new Expense("", "", "", "", "",""))
     const [loading, setLoading] = useState(false)
     const currentUser = useSelector((state) => state.user);
 
@@ -19,6 +19,8 @@ const ExpenseForm = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        //console.log(e.target.value)
+        console.log()
         setExpense((previousState) => {
             return {
                 ...previousState,
@@ -42,9 +44,10 @@ const ExpenseForm = () => {
         }
         setLoading(true);
 
-        //Authenitcation next
+
         ExpenseService.addExpense(expense)
             .then((response) => {
+            console.log(response.data)
                 //set user in session
                 dispatch(setCurrentUser(response.data));
                 navigate("/dashboard");
@@ -125,7 +128,7 @@ const ExpenseForm = () => {
                                 placeholder=""
                                 value={expense.expenseDateTime}
                                 onChange={(e) => handleChange(e)}
-                                required
+
                             />
                             <div className="invalid-feedback">Expense Date/Time is required</div>
                         </div>

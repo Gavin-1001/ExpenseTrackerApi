@@ -1,17 +1,18 @@
 import {BASE_API_URL} from "../../api/baseUrl";
 import axios from 'axios'
 
-const BASE_AUTH_URL = BASE_API_URL + '/api/auth'
 
-class AuthService{
+const BASE_AUTH_URL = BASE_API_URL + '/api/auth';
+
+class AuthenticationService{
 
     login(user){
-        return axios.post(BASE_AUTH_URL + '/signin');
+        return axios.post(BASE_AUTH_URL + '/signin', user);
     }
 
     register(user){
-        return axios.post(BASE_API_URL + '/register');
+        return axios.post(BASE_AUTH_URL + '/register', user);
     }
 }
 
-export default AuthService;
+export default new AuthenticationService();

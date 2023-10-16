@@ -13,7 +13,7 @@ const userReducer = (state = {}, action) => {
 
         default:
             return JSON.parse(localStorage.getItem('currentUser'));
-            //json will be initialized from the localStorage
+        //json will be initialized from the localStorage
     }
 }
 

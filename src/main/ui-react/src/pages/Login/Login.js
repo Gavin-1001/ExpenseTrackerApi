@@ -3,8 +3,10 @@ import {useEffect, useState} from "react";
 import User from "../../common/models/User";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, Link} from "react-router-dom";
+
 import {setCurrentUser} from "../../redux/store/actions/users";
 import AuthService from "../../services/AuthService.service/AuthService";
+
 
 const Login = () => {
 
@@ -63,6 +65,7 @@ const Login = () => {
 
 
 
+
     return( 
         <div className={"container mt-5"} >
               <div className="card ms-auto me-auto p-3 shadow-lg custom-card">
@@ -110,6 +113,7 @@ const Login = () => {
 
                     {/*Add the button*/}
                     <button className="btn btn-primary w-100 mt-3">Sign in</button>
+                    {/*<button onClick={() => (currentUser.id)} className="btn btn-primary w-100 mt-3">Click Me</button>*/}
                 </form>
                 <Link
                     to="/register"

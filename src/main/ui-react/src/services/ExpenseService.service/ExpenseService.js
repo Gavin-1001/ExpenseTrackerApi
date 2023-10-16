@@ -13,4 +13,4 @@ class Expense{
     }
 }
 
-export default Expense;
+export default new Expense();

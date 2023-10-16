@@ -2,8 +2,9 @@ import { useState } from "react";
 import Expense from "../../common/models/Expense";
 import ExpenseService from './../../services/ExpenseService.service/ExpenseService';
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate, Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {setCurrentUser} from "../../redux/store/actions/users";
+import Sidebar from "../../components/Navigation/Sidebar/Sidebar";
 
 const ExpenseForm = () => {
 
@@ -39,7 +40,7 @@ const ExpenseForm = () => {
         //stops the login creds being displayed in url
 
         setSubmitted(true);
-        if (!expense.expenseTitle || !expense.expenseDescription || !expense.expensePrice || !expense.expenseDateTime) {
+        if (!expense.expenseTitle || !expense.expenseDescription || !expense.expensePrice ) {
             return; //checks if username and password fields are not empty
         }
         setLoading(true);
@@ -66,6 +67,7 @@ const ExpenseForm = () => {
                     {errorMessage && (
                         <div className="alert alert-danger">{errorMessage}</div>
                     )}
+                      <Sidebar />
                     <form
                         onSubmit={(e) => handleExpense(e)}
                         className={submitted ? "was-validated" : ""}
@@ -122,7 +124,8 @@ const ExpenseForm = () => {
                             {/*ExpenseDate*/}
                             <label htmlFor="expenseDate">Expense Date</label>
                             <input
-                                type="datetime-local"
+                                type="date"
+                                // type="datetime-local"
                                 name="expenseDate"
                                 className="form-control"
                                 placeholder=""
@@ -136,7 +139,7 @@ const ExpenseForm = () => {
                         {/*Add the button*/}
                         <button className="btn btn-primary w-100 mt-3">Add Expense</button>
                         <button className="btn btn-danger w-100 mt-3">Reset</button>
-                        <button onClick={(clickMe)} className="btn btn-primary w-100 mt-5">Click me</button>
+                        {/*<button onClick={(clickMe)} className="btn btn-primary w-100 mt-5">Click me</button>*/}
                     </form>
                 </div>
             </div>

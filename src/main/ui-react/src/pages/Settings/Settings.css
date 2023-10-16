@@ -1,0 +1,10 @@
+.container {
+    display: flex; /* Use flexbox to create a horizontal layout */
+}
+
+.box {
+    width: 25%; /* Set the width of each box to 25% to make them equal in size */
+    border: 1px solid #000; /* Just for visual separation */
+    box-sizing: border-box; /* Include borders in the width calculation */
+    padding: 10px; /* Add some padding for spacing */
+}

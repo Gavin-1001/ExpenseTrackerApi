@@ -1,11 +1,15 @@
-/*
 .container {
-    /* background-color: green; 
+    background-color: green;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);  Four equal-width columns 
-    grid-gap: 50px; /* Spacing between items 
+    grid-template-columns: repeat(4, 1fr);
+    /*Four equal-width columns*/
+    grid-gap: 50px;
+    /*
+
+    Spacing between items
+     */
 } 
-*/
+
 
 
 .sevenDayPurchases {
@@ -38,18 +42,18 @@
     padding: 10px;
     background-color: inherit;
     margin-top: 5rem;
+
 }
 
 .search{
-    margin: 0%;
+    /*margin: 0%;*/
 }
 
 .title-searchcontainer{
     background-color: blue;
     margin-bottom: 180px;
-    margin-top: -43px;
+    margin-top: 43px;
 
-    padding: 0%;
 }
 
 

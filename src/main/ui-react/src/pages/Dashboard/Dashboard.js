@@ -4,7 +4,6 @@ const Dashboard = () => {
 
     return (
         <div className="container">
-
             <div className="title-searchcontainer">
                 <div className="title">
                     Expense Tracker

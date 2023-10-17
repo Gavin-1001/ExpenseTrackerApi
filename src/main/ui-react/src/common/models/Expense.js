@@ -1,10 +1,8 @@
 export default class Expense{
-    constructor (expenseId, expenseTitle, expenseDescription, expensePrice, expenseDateTime, expenseUser){
-        this.expenseId = expenseId;
+    constructor (expenseTitle, expenseDescription, expensePrice, expenseDate){
         this.expenseTitle = expenseTitle;
         this.expenseDescription = expenseDescription;
         this.expensePrice = expensePrice;
-        this.expenseDateTime = expenseDateTime;
-        this.expenseUser = expenseUser;
+        this.expenseDate = expenseDate;
     }
 }

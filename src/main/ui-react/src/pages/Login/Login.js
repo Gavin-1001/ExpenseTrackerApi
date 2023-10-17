@@ -23,7 +23,7 @@ const Login = () => {
 
     useEffect(() => {
         if (currentUser?.id) {
-            navigate("/profile");
+            navigate("/dashboard");
         }
     }, []);
 

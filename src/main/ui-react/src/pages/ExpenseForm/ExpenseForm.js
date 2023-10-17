@@ -10,7 +10,7 @@ const ExpenseForm = () => {
 
     const [errorMessage, setErrorMessage] = useState("");
     const [submitted, setSubmitted] = useState(false);
-    const [expense, setExpense] = useState(new Expense("", "", "", "", "",""))
+    const [expense, setExpense] = useState(new Expense("", "", "", "", ""))
     const [loading, setLoading] = useState(false)
     const currentUser = useSelector((state) => state.user);
 
@@ -21,7 +21,6 @@ const ExpenseForm = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         //console.log(e.target.value)
-        console.log()
         setExpense((previousState) => {
             return {
                 ...previousState,
@@ -40,7 +39,7 @@ const ExpenseForm = () => {
         //stops the login creds being displayed in url
 
         setSubmitted(true);
-        if (!expense.expenseTitle || !expense.expenseDescription || !expense.expensePrice ) {
+        if (!expense.expenseTitle || !expense.expenseDescription || !expense.expensePrice || !expense.expenseDate) {
             return; //checks if username and password fields are not empty
         }
         setLoading(true);
@@ -49,8 +48,7 @@ const ExpenseForm = () => {
         ExpenseService.addExpense(expense)
             .then((response) => {
             console.log(response.data)
-                //set user in session
-                dispatch(setCurrentUser(response.data));
+
                 navigate("/dashboard");
             })
             .catch((error) => {
@@ -58,7 +56,6 @@ const ExpenseForm = () => {
                 setErrorMessage("USERNAME OR PASSWORD IS NOT VALID!!!");
                 setLoading(false);
             });}
-
 
     return (
             <div className={"container mt-5"} >
@@ -75,7 +72,7 @@ const ExpenseForm = () => {
                     >
                         <div className="form-group">
                             {/*USERNAME*/}
-                            <label htmlFor="username">Expense Title</label>
+                            <label htmlFor="expenseTitle">Expense Title</label>
                             <input
                                 type="text"
                                 name="expenseTitle"
@@ -109,7 +106,7 @@ const ExpenseForm = () => {
                             {/*PASSWORD*/}
                             <label htmlFor="expensePrice">Expense Price</label>
                             <input
-                                type="text"
+                                type="number"
                                 name="expensePrice"
                                 className="form-control"
                                 placeholder="Add an expense"
@@ -129,7 +126,7 @@ const ExpenseForm = () => {
                                 name="expenseDate"
                                 className="form-control"
                                 placeholder=""
-                                value={expense.expenseDateTime}
+                                value={expense.expenseDate}
                                 onChange={(e) => handleChange(e)}
 
                             />

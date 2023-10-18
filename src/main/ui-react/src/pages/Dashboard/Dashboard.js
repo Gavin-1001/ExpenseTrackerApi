@@ -3,8 +3,8 @@ import './Dashboard.css'
 const Dashboard = () => {
 
     return (
-        <div className="container">
-            <div className="title-searchcontainer">
+        <div className="dashboardContainer">
+            <div className="titleSearchContainer">
                 <div className="title">
                     Expense Tracker
                 </div>

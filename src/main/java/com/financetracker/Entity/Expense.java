@@ -4,6 +4,7 @@ import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -18,15 +19,19 @@ public class Expense {
     private String id;
 
     @Column()
-    private String expenseName;
+    private String expenseTitle;
 
     @Column()
     private String expenseDescription;
 
     @Column()
-    private double price;
+    private double expensePrice;
 
     @Column()
-    private LocalDateTime dateCreated;
+    private LocalDateTime timestampExpenseCreated;
+
+    @Column()
+    private LocalDate expenseDate;
+
 
 }

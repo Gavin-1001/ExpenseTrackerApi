@@ -28,7 +28,7 @@ function App() {
                         element={
                             <AuthGuard roles={[Role.USER]}>
                             <>
-                                <Sidebar/>
+                                {/*<Sidebar/>*/}
                                 <Dashboard/>
                             </>
                             </AuthGuard>

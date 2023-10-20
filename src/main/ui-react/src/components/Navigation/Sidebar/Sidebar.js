@@ -1,7 +1,7 @@
 import './Sidebar.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGear} from "@fortawesome/free-solid-svg-icons/faGear";
-import {faChartLine, faHouse, faRightFromBracket} from "@fortawesome/free-solid-svg-icons";
+import {faChartLine, faHouse, faInfo, faRightFromBracket} from "@fortawesome/free-solid-svg-icons";
 import { NavLink, useNavigate} from "react-router-dom";
 import {faCalculator} from "@fortawesome/free-solid-svg-icons/faCalculator";
 import {useDispatch, useSelector} from "react-redux";
@@ -32,8 +32,8 @@ const Sidebar = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/dashboard'}>
-                                <FontAwesomeIcon icon={faChartLine} style={{color: "#ffffff",}} />
+                            <NavLink to={'/'}>
+                                <FontAwesomeIcon icon={faChartLine} style={{color: "#ffffff"}} />
                             </NavLink>
                         </li>
                         <li>
@@ -43,7 +43,9 @@ const Sidebar = () => {
                         </li>
 
                         <li>
-                            <a href="#about">About</a>
+                            <NavLink to={'/about'}>
+                                <FontAwesomeIcon icon={faInfo} size="lg" style={{color: "#ffffff"}} />
+                            </NavLink>
                         </li>
                         {/* Move the "Services" link to the bottom */}
                         <li>
@@ -56,8 +58,6 @@ const Sidebar = () => {
                                 <FontAwesomeIcon icon={faRightFromBracket} style={{color: "#f7f7f4"}} onClick={() => logout()}/>
                             </NavLink>
                         </li>
-
-
 
                     </ul>
                 </nav>

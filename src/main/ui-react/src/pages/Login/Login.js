@@ -23,7 +23,7 @@ const Login = () => {
 
     useEffect(() => {
         if (currentUser?.id) {
-            navigate("/dashboard");
+            navigate("/");
         }
     }, []);
 
@@ -43,7 +43,7 @@ const Login = () => {
             .then((response) => {
                 //set user in session
                 dispatch(setCurrentUser(response.data));
-                navigate("/dashboard");
+                navigate("/");
             })
             .catch((error) => {
                 console.log(error);

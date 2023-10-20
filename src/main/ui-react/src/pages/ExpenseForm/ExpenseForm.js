@@ -29,9 +29,6 @@ const ExpenseForm = () => {
         });
     };
 
-    const clickMe = () => {
-        console.log(currentUser)
-    }
 
     const handleExpense = (e) =>{ 
         
@@ -49,7 +46,7 @@ const ExpenseForm = () => {
             .then((response) => {
             console.log(response.data)
 
-                navigate("/dashboard");
+                navigate("/");
             })
             .catch((error) => {
                 console.log(error);

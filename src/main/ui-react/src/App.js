@@ -17,14 +17,14 @@ function App() {
             <div className="container">
                 <Routes>
 
-                    <Route path="/" element={<Home/>}/>
+
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/logout" element={<Logout />} />
 
 
                     <Route
-                        path="/dashboard"
+                        path="/"
                         element={
                             <AuthGuard roles={[Role.USER]}>
                             <>

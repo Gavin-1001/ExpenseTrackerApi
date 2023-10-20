@@ -5,7 +5,7 @@ const Settings = () => {
 
     return (
         <div className="container">
-            <h3 className={"col-7"}>Settings</h3>
+            <h3 className={"col-7 settings"}>Settings</h3>
             <Sidebar/>
         </div>
 

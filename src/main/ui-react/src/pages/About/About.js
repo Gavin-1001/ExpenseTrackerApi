@@ -1,8 +1,6 @@
 const About = () => {
 
-    let versionNumber = 1.0;
-
-
+    let versionNumber = "1.0";
 
     return (
         <div className="aboutContainer">

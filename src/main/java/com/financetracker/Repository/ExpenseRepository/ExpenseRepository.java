@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface ExpenseRepository extends JpaRepository<Expense, String> {
 
-}
+    List<Expense> findByExpenseDateBetween(LocalDate oneWeekAgo, LocalDate today);
+
+    }

@@ -6,10 +6,16 @@ const BASE_EXPENSE_URL = BASE_API_URL + '/api/expense/'
 
 class Expense{
 
-
-
     addExpense(expense){
         return axios.post(BASE_EXPENSE_URL+'addExpense', expense );
+    }
+
+    getWeeklyExpenses(){
+        return axios.get(BASE_EXPENSE_URL+'groupByWeek');
+    }
+
+    getMonthlyExpenses(){
+        return axios.get(BASE_EXPENSE_URL+'groupByMonth');
     }
 }
 

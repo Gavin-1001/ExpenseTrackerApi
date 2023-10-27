@@ -10,6 +10,7 @@ import Settings from "./pages/Settings/Settings";
 import ExpenseForm from './pages/ExpenseForm/ExpenseForm';
 import Register from "./pages/Register/Register";
 import Logout from "./pages/Logout/Logout";
+import About from "./pages/About/About";
 
 function App() {
     return (
@@ -52,6 +53,13 @@ function App() {
                             }
                             />
 
+                    <Route path="/about"
+                           element={
+                                <AuthGuard>
+                                    <About />
+                                </AuthGuard>
+                           }
+                           />
 
                 </Routes>
             </div>

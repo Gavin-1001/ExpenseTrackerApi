@@ -3,12 +3,16 @@ package com.financetracker.Services.ExpenseService;
 
 import com.financetracker.Entity.Expense;
 import com.financetracker.Repository.ExpenseRepository.ExpenseRepository;
+import com.financetracker.Utils.DateUtils;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.WeekFields;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ExpenseServiceImpl implements ExpenseService {
@@ -128,7 +132,54 @@ public class ExpenseServiceImpl implements ExpenseService {
         return expensesByMonth;
     }
 
-    //getting the wrong date, gets the date of when the timestamp was added not when the expense was
-    // made, see POSTMAN
+    @Override
+    public long getPurchasesInWeek() {
+        LocalDate today = LocalDate.now();
+        LocalDate oneWeekAgo = today.minus(2, ChronoUnit.DAYS);
+        List<Expense> expensesInWeek = expenseRepository.findByExpenseDateBetween(oneWeekAgo, today);
+        return expensesInWeek.size();
+    }
+
+
+
+
+    public Map<LocalDateTime, Long> groupExpensesByWeek() {
+        List<Expense> allExpenses = expenseRepository.findAll();
+
+        // Group expenses by week using Java Streams and count them
+        Map<LocalDateTime, Long> expensesByWeek = allExpenses.stream()
+                .collect(Collectors.groupingBy(expense -> {
+                    LocalDateTime timestampExpenseCreated = expense.getExpenseDate().atStartOfDay();
+                    return DateUtils.getStartOfWeek(timestampExpenseCreated);
+                }, Collectors.counting()));
+
+        return expensesByWeek;
+    }
+
+    public long countExpensesInPreviousWeek() {
+        LocalDate currentDate = LocalDate.now();
+
+        // Calculate the start and end dates of the previous week (assuming Monday as the start of the week)
+        LocalDate endOfPreviousWeek = currentDate.with(java.time.temporal.TemporalAdjusters.previous(DayOfWeek.MONDAY));
+        LocalDate startOfPreviousWeek = endOfPreviousWeek.minusDays(6);
+
+        // Fetch expenses that fall within the previous week
+        List<Expense> expensesInPreviousWeek = expenseRepository.findByExpenseDateBetween(startOfPreviousWeek, endOfPreviousWeek);
+
+        return expensesInPreviousWeek.size();
+    }
+
+
+
+    @Override
+    public long countExpenseInPreviousMonth() {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate endOfPreviousMonth = currentDate.with(java.time.temporal.TemporalAdjusters.previous(DayOfWeek.MONDAY));
+        LocalDate startOfPreviousMonth = endOfPreviousMonth.minusDays(30);
+
+        List<Expense> expensesInPreviousMonth = expenseRepository.findByExpenseDateBetween(startOfPreviousMonth, endOfPreviousMonth);
+        return expensesInPreviousMonth.size();
+    }
+
 }
 

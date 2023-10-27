@@ -3,10 +3,11 @@ package com.financetracker.Services.ExpenseService;
 import com.financetracker.Entity.Expense;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
-public interface ExpenseService{
+public interface ExpenseService {
 
     List<Expense> getAll();
 
@@ -23,5 +24,14 @@ public interface ExpenseService{
     Map<LocalDate, List<Expense>> groupExpensesByDate(int numOfDates);
 
     Map<Integer, List<Expense>> groupExpensesByMonth(int month);
+
+    long getPurchasesInWeek();
+
+    Map<LocalDateTime, Long> groupExpensesByWeek();
+
+    long countExpensesInPreviousWeek();
+
+
+    long countExpenseInPreviousMonth();
 }
 

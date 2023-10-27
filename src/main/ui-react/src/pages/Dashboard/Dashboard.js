@@ -1,10 +1,35 @@
 import './Dashboard.css'
 import Sidebar from "../../components/Navigation/Sidebar/Sidebar";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import ExpenseService from "../../services/ExpenseService.service/ExpenseService";
 
 
 const Dashboard = () => {
 
+    const [count, setCount] = useState(null);
+    const [countMonth, setCountMonth] = useState(null);
+    const [errorMessage, setErrorMessage] = useState("")
 
+    useEffect(() => {
+        // Fetch data from your Spring Boot endpoint
+       ExpenseService.getWeeklyExpenses()
+            .then((response) => {
+                setCount(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching expenses:', error);
+            });
+
+       ExpenseService.getMonthlyExpenses()
+           .then((response) => {
+               setCountMonth(response.data);
+        })
+            .catch((error) => {
+                console.error('Error fetching monthly expenses:', error);
+                setErrorMessage("Error fetching monthly expenses")
+            });
+    }, []);
 
 
     return (
@@ -16,15 +41,23 @@ const Dashboard = () => {
 
                     <div className="col-5 col-xl-2 windows" style={{backgroundColor: "mediumpurple"}}>
                         <h5>Purchases last week</h5>
-                        <p>number of purchases{}</p>
+                        {count !== null ? (
+                            <p className={""}> {count}</p>
+                        ) : (
+                            <p>Loading...</p>
+                        )}
+                        <div className="invalid-feedback">Purchase error</div>
                     </div>
                     <div className="col-5 col-xl-2 windows" style={{backgroundColor: "lightseagreen"}}>
                         <h5>Purchases last month</h5>
-                        <p>number of purchases{}</p>
-                        {/* interpolate it */}
+                        {countMonth !== null ? (
+                            <p className={""}> {countMonth}</p>
+                        ) : (
+                            <p>Loading...</p>
+                        )}
                     </div>
                     <div className="col-4 col-xl-2 windows">
-                        Something else
+                        Have top expenses here for the week and the month
                     </div>
 
                     <div className="col-4 col-xl-5 largeWindow" style={{backgroundColor: "paleturquoise"}}>Graph or something</div>

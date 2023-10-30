@@ -33,5 +33,8 @@ public interface ExpenseService {
 
 
     long countExpenseInPreviousMonth();
+
+
+    Map<String, Long> getCategoryCounts();
 }
 

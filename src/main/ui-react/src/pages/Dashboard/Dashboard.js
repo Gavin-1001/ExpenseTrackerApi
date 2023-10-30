@@ -68,7 +68,7 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="row row-cols-2 row-cols-lg-3">
-                    <div className="col-5 col-xl-9" style={{backgroundColor: "mediumpurple", marginTop: "8.5rem"}}>
+                    <div className="col-5 col-xl-9" style={{backgroundColor: "mediumpurple", marginTop: "8.5rem", marginBottom: "8.9rem" }}>
                         <p>Large graph goes here</p>
                         <LineChart />
                     </div>

@@ -31,6 +31,9 @@ public class Expense {
     private LocalDateTime timestampExpenseCreated;
 
     @Column()
+    private String expenseCategory;
+
+    @Column()
     private LocalDate expenseDate;
 
 

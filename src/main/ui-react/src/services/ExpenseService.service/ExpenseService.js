@@ -17,6 +17,10 @@ class Expense{
     getMonthlyExpenses(){
         return axios.get(BASE_EXPENSE_URL+'groupByMonth');
     }
+
+    getLineChartData(){
+        return axios.get(BASE_EXPENSE_URL+'getCategoryCount');
+    }
 }
 
 export default new Expense();

@@ -56,6 +56,10 @@ public class ExpenseServiceImpl implements ExpenseService {
             updatedExpense.setExpenseDate(expense.getExpenseDate());
         }
 
+        if (Objects.nonNull(expense.getExpenseCategory())) {
+            updatedExpense.setExpenseCategory(expense.getExpenseCategory());
+        }
+
 
         return expenseRepository.save(updatedExpense);
     }
@@ -156,6 +160,19 @@ public class ExpenseServiceImpl implements ExpenseService {
         return expensesByWeek;
     }
 
+//    @Override
+//    public Map<String, Long> getExpenseByCategory() {
+//
+//        List<Expense> allExpenses = expenseRepository.findAll();
+//
+//        Map<String, Long> expensesByCategory = allExpenses.stream()
+//                .collect(Collectors.groupingBy(expense -> {
+//                    String expensesCategory = expense.getExpenseCategory();
+//                    return expensesCategory;
+//                }, Collectors.counting()));
+//        return expensesByCategory;
+//    }
+
     public long countExpensesInPreviousWeek() {
         LocalDate currentDate = LocalDate.now();
 
@@ -180,6 +197,21 @@ public class ExpenseServiceImpl implements ExpenseService {
         List<Expense> expensesInPreviousMonth = expenseRepository.findByExpenseDateBetween(startOfPreviousMonth, endOfPreviousMonth);
         return expensesInPreviousMonth.size();
     }
+
+    @Override
+    public Map<String, Long> getCategoryCounts() {
+        List<Object[]> categoryCounts = expenseRepository.getCategoryCounts();
+        Map<String, Long> counts = new HashMap<>();
+
+        for (Object[] categoryCount : categoryCounts) {
+            String categoryName = (String) categoryCount[0];
+            Long count = (Long) categoryCount[1];
+            counts.put(categoryName, count);
+        }
+
+        return counts;
+    }
+
 
 }
 

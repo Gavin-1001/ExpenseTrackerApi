@@ -1,9 +1,9 @@
 import './Dashboard.css'
 import Sidebar from "../../components/Navigation/Sidebar/Sidebar";
 import {useEffect, useState} from "react";
-import axios from "axios";
 import ExpenseService from "../../services/ExpenseService.service/ExpenseService";
-
+import PieChart from "../../components/metrics/charts/PieChart/PieChart";
+import LineChart from "../../components/metrics/charts/LineChart/LineChart";
 
 const Dashboard = () => {
 
@@ -11,9 +11,11 @@ const Dashboard = () => {
     const [countMonth, setCountMonth] = useState(null);
     const [errorMessage, setErrorMessage] = useState("")
 
+
+
     useEffect(() => {
         // Fetch data from your Spring Boot endpoint
-       ExpenseService.getWeeklyExpenses()
+        ExpenseService.getWeeklyExpenses()
             .then((response) => {
                 setCount(response.data);
             })
@@ -21,10 +23,10 @@ const Dashboard = () => {
                 console.error('Error fetching expenses:', error);
             });
 
-       ExpenseService.getMonthlyExpenses()
-           .then((response) => {
-               setCountMonth(response.data);
-        })
+        ExpenseService.getMonthlyExpenses()
+            .then((response) => {
+                setCountMonth(response.data);
+            })
             .catch((error) => {
                 console.error('Error fetching monthly expenses:', error);
                 setErrorMessage("Error fetching monthly expenses")
@@ -35,7 +37,7 @@ const Dashboard = () => {
     return (
 
         <div className="container">
-            <Sidebar />
+            <Sidebar/>
             <div className="windowsContainer" style={{marginTop: "7rem"}}>
                 <div className="row row-cols-2 row-cols-lg-3">
 
@@ -60,11 +62,15 @@ const Dashboard = () => {
                         Have top expenses here for the week and the month
                     </div>
 
-                    <div className="col-4 col-xl-5 largeWindow" style={{backgroundColor: "paleturquoise"}}>Graph or something</div>
+                    <div className="col-4 col-xl-5 largeWindow" style={{backgroundColor: "paleturquoise"}}>
+                        <PieChart />
+
+                    </div>
                 </div>
                 <div className="row row-cols-2 row-cols-lg-3">
                     <div className="col-5 col-xl-9" style={{backgroundColor: "mediumpurple", marginTop: "8.5rem"}}>
                         <p>Large graph goes here</p>
+                        <LineChart />
                     </div>
                 </div>
             </div>

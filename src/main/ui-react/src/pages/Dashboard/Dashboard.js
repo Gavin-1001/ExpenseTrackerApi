@@ -40,7 +40,6 @@ const Dashboard = () => {
             <Sidebar/>
             <div className="windowsContainer" style={{marginTop: "7rem"}}>
                 <div className="row row-cols-2 row-cols-lg-3">
-
                     <div className="col-5 col-xl-2 windows" style={{backgroundColor: "mediumpurple"}}>
                         <h5>Purchases last week</h5>
                         {count !== null ? (
@@ -70,7 +69,7 @@ const Dashboard = () => {
                 <div className="row row-cols-2 row-cols-lg-3">
                     <div className="col-5 col-xl-9" style={{backgroundColor: "mediumpurple", marginTop: "8.5rem", marginBottom: "8.9rem" }}>
                         <p>Large graph goes here</p>
-                        <LineChart />
+                        {/*<LineChart />*/}
                     </div>
                 </div>
             </div>

@@ -94,7 +94,7 @@ public class ExpenseController {
     @GetMapping("/getPurchaseCountForCurrentWeek")
     public long getPurchaseForCurrentWeek(){
         return expenseService.getPurchaseCountForCurrentWeek();
-    }
+    }//doesn't work I think
 
 
 }

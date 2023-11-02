@@ -25,8 +25,15 @@
     align-items: center; /* Center child divs horizontally */
     width: 300px;
     height: 200px;
-    background-color: #ccc;
-    border: 1px solid #000;
+    /*background-color: #ccc;*/
+    /*border: 1px solid mediumpurple;*/
     padding: 10px;
 }
 
+.child {
+    width: 100px;
+    height: 100px;
+    //background-color: inherit; {/*doesn't inherit anything */}
+    /*border: 1px solid mediumpurple;*/
+    margin: 10px;
+}

@@ -91,6 +91,10 @@ public class ExpenseController {
         return expenseService.getCategoryCounts();
     }
 
+    @GetMapping("/getPurchaseCountForCurrentWeek")
+    public long getPurchaseForCurrentWeek(){
+        return expenseService.getPurchaseCountForCurrentWeek();
+    }
 
 
 }

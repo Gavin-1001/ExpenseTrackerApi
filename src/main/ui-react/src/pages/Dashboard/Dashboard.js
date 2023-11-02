@@ -12,7 +12,6 @@ const Dashboard = () => {
     const [errorMessage, setErrorMessage] = useState("")
 
 
-
     useEffect(() => {
         // Fetch data from your Spring Boot endpoint
         ExpenseService.getWeeklyExpenses()
@@ -41,42 +40,52 @@ const Dashboard = () => {
             <div className="windowsContainer" style={{marginTop: "7rem"}}>
                 <div className="row row-cols-2 row-cols-lg-3">
 
-
                     <div className="col-5 col-xl-2 windows" style={{backgroundColor: "mediumpurple"}}>
-                       {/*Todo->_Have_the_left_div_with_current_week_metrics_but_put_as_two_smaller_divs_nested_in_bigger_div*/}
-                        <h5>Purchases last week</h5>
-                        {count !== null ? (
-                            <p className={""}> {count}</p>
-                        ) : (
-                            <p>Loading...</p>
-                        )}
-                        <div className="invalid-feedback">Purchase error</div>
-                    </div>
-                    <div style={{width: '0', backgroundColor: 'darkcyan'}}>
-                        .akjsdkjahskdjhgaklsjd
-                        kjhhkljhwkjehrkwehj
+                        <div className={"child"} style={{backgroundColor: "mediumpurple"}}>
+                            {/*Todo->_Have_the_left_div_with_current_week_metrics_but_put_as_two_smaller_divs_nested_in_bigger_div*/}
+                                Purchases by Week
+                            <div className="invalid-feedback">Purchase error</div>
+                        </div>
+                        <div className={"child"} style={{backgroundColor: "mediumpurple"}}>
+                            {/*Todo->_Have_the_left_div_with_current_week_metrics_but_put_as_two_smaller_divs_nested_in_bigger_div*/}
+                            Top Purchases this Week
+                            <div className="invalid-feedback">Purchase error</div>
+                        </div>
                     </div>
                     <div className="col-5 col-xl-2 windows" style={{backgroundColor: "lightseagreen"}}>
                         {/*Todo->_Have_the_middle_div_with_previous_week_metrics_but_put_as_two_smaller_divs_nested_in_bigger_div*/}
-                        <h5>Purchases last month</h5>
-                        {countMonth !== null ? (
-                            <p className={""}> {countMonth}</p>
-                        ) : (
-                            <p>Loading...</p>
-                        )}
+                        <div className={"child"}>
+                            <h5>Purchases last week</h5>
+                            {count !== null ? (
+                                <p className={""}> {count}</p>
+                            ) : (
+                                <p>Loading...</p>
+                            )}
 
+                        </div>
+                        <div className={"child"}>
+                            {/*     */}
+                            <h5>Purchases last month</h5>
+                            {countMonth !== null ? (
+                                <p className={""}> {countMonth}</p>
+                            ) : (
+                                <p>Loading...</p>
+                            )}
+
+                        </div>
                     </div>
                     <div className="col-4 col-xl-2 windows">
                         Have top expenses here for the week and the month
                     </div>
 
                     <div className="col-4 col-xl-5 largeWindow" style={{backgroundColor: "paleturquoise"}}>
-                        <PieChart />
+                        <PieChart/>
 
                     </div>
                 </div>
                 <div className="row row-cols-2 row-cols-lg-3">
-                    <div className="col-5 col-xl-9" style={{backgroundColor: "mediumpurple", marginTop: "8.5rem", marginBottom: "8.9rem" }}>
+                    <div className="col-5 col-xl-9"
+                         style={{backgroundColor: "mediumpurple", marginTop: "8.5rem", marginBottom: "8.9rem"}}>
                         <p>Large graph goes here</p>
                         {/*<LineChart />*/}
                     </div>

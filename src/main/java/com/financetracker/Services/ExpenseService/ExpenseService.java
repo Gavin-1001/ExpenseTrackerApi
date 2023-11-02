@@ -36,5 +36,8 @@ public interface ExpenseService {
 
 
     Map<String, Long> getCategoryCounts();
+
+
+    long getPurchaseCountForCurrentWeek();
 }
 

@@ -199,6 +199,17 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
+    public long getPurchaseCountForCurrentWeek() {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate endOfPreviousWeek = currentDate.with(java.time.temporal.TemporalAdjusters.previous(DayOfWeek.MONDAY));
+        LocalDate startOfPreviousWeek = endOfPreviousWeek.minusDays(7);
+
+        List<Expense> expenseInPreviousWeek = expenseRepository.findByExpenseDateBetween(startOfPreviousWeek, endOfPreviousWeek);
+
+        return expenseInPreviousWeek.size();
+    }
+
+    @Override
     public Map<String, Long> getCategoryCounts() {
         List<Object[]> categoryCounts = expenseRepository.getCategoryCounts();
         Map<String, Long> counts = new HashMap<>();
@@ -211,6 +222,8 @@ public class ExpenseServiceImpl implements ExpenseService {
 
         return counts;
     }
+
+
 
 
 }

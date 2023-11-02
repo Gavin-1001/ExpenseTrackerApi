@@ -1,16 +1,19 @@
-.containerDivs {
+.parent {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Set a fixed height for the container (e.g., the viewport height) */
-}
-
-/* Style for the stacked divs */
-.stacked-div {
-    width: 200px;
-    height: 100px;
+    flex-direction: column; /* Stack child divs vertically */
+    align-items: center; /* Center child divs horizontally */
+    width: 300px;
+    height: 200px;
     background-color: #ccc;
     border: 1px solid #000;
+    padding: 10px;
+}
+
+/* Style for the child divs */
+.child {
+    width: 100px;
+    height: 100px;
+    background-color: #f0f0f0;
+    border: 1px solid #999;
     margin: 10px;
 }

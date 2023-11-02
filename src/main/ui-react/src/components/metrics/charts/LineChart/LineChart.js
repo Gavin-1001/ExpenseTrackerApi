@@ -4,6 +4,7 @@ import ExpenseService from "../../../../services/ExpenseService.service/ExpenseS
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {BASE_API_URL} from "../../../../api/baseUrl";
+import './../../../../pages/About/About.css'
 
 const LineChart = () => {
     const [chartData, setChartData] = useState({});
@@ -52,6 +53,7 @@ const LineChart = () => {
             <h2>Line Chart Example</h2>
             <div style={{ width: '400px', height: '400px' }}>
                 <Line data={chartData} />
+
             </div>
         </div>
     );

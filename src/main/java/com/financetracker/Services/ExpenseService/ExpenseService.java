@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public interface ExpenseService {
 
@@ -38,6 +39,10 @@ public interface ExpenseService {
     Map<String, Long> getCategoryCounts();
 
 
-    long getPurchaseCountForCurrentWeek();
+
+    long getTotalAmountOfPurchasesForCurrentWeek();
+
+
+    Optional<Expense> getTopPurchaseForCurrentWeek();
 }
 

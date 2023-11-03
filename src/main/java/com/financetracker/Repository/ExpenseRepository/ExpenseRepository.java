@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ExpenseRepository extends JpaRepository<Expense, String> {
@@ -17,4 +18,8 @@ public interface ExpenseRepository extends JpaRepository<Expense, String> {
 
     @Query("SELECT e.expenseCategory, COUNT(e) FROM Expense e GROUP BY e.expenseCategory")
     List<Object[]> getCategoryCounts();
+
+    Expense findTopByExpenseDateBetweenOrderByExpensePriceDesc(LocalDate startDateCurrentWeek, LocalDate endDateCurrentWeek);
+
+    Optional<Expense> findAllByExpenseDateBetween(LocalDate startDate, LocalDate endDate);
 }

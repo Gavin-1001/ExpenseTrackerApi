@@ -10,6 +10,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 import java.time.temporal.WeekFields;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -117,7 +118,6 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
 
-
     public Map<Integer, List<Expense>> groupExpensesByMonth(int month) {
         List<Expense> allExpenses = expenseRepository.findAll();
         Map<Integer, List<Expense>> expensesByMonth = new LinkedHashMap<>();
@@ -140,11 +140,10 @@ public class ExpenseServiceImpl implements ExpenseService {
     public long getPurchasesInWeek() {
         LocalDate today = LocalDate.now();
         LocalDate oneWeekAgo = today.minus(2, ChronoUnit.DAYS);
-        List<Expense> expensesInWeek = expenseRepository.findByExpenseDateBetween(oneWeekAgo, today);
-        return expensesInWeek.size();
+        //List<Expense> expensesInWeek = expenseRepository.findByExpenseDateBetween(oneWeekAgo, today);
+        //return expensesInWeek.size();
+        return 0;
     }
-
-
 
 
     public Map<LocalDateTime, Long> groupExpensesByWeek() {
@@ -178,14 +177,13 @@ public class ExpenseServiceImpl implements ExpenseService {
 
         // Calculate the start and end dates of the previous week (assuming Monday as the start of the week)
         LocalDate endOfPreviousWeek = currentDate.with(java.time.temporal.TemporalAdjusters.previous(DayOfWeek.MONDAY));
-        LocalDate startOfPreviousWeek = endOfPreviousWeek.minusDays(6);
+        LocalDate startOfPreviousWeek = endOfPreviousWeek.minusDays(7);
 
         // Fetch expenses that fall within the previous week
         List<Expense> expensesInPreviousWeek = expenseRepository.findByExpenseDateBetween(startOfPreviousWeek, endOfPreviousWeek);
 
         return expensesInPreviousWeek.size();
     }
-
 
 
     @Override
@@ -199,15 +197,23 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public long getPurchaseCountForCurrentWeek() {
+    public long getTotalAmountOfPurchasesForCurrentWeek() {
         LocalDate currentDate = LocalDate.now();
-        LocalDate endOfPreviousWeek = currentDate.with(java.time.temporal.TemporalAdjusters.previous(DayOfWeek.MONDAY));
-        LocalDate startOfPreviousWeek = endOfPreviousWeek.minusDays(7);
+        LocalDate startDateCurrentWeek = currentDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
+        LocalDate endDateCurrentWeek = currentDate.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
 
-        List<Expense> expenseInPreviousWeek = expenseRepository.findByExpenseDateBetween(startOfPreviousWeek, endOfPreviousWeek);
-
-        return expenseInPreviousWeek.size();
+        List<Expense> expensesInPreviousWeek = expenseRepository.findByExpenseDateBetween(startDateCurrentWeek, endDateCurrentWeek);
+        return expensesInPreviousWeek.size();
     }
+
+    @Override
+    public Optional<Expense> getTopPurchaseForCurrentWeek() {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate startDate = currentDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
+        LocalDate endDate = currentDate.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
+        return expenseRepository.findAllByExpenseDateBetween(startDate, endDate);
+    }
+
 
     @Override
     public Map<String, Long> getCategoryCounts() {
@@ -222,8 +228,6 @@ public class ExpenseServiceImpl implements ExpenseService {
 
         return counts;
     }
-
-
 
 
 }

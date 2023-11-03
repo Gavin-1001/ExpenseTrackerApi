@@ -21,6 +21,10 @@ class Expense{
     getLineChartData(){
         return axios.get(BASE_EXPENSE_URL+'getCategoryCount');
     }
+
+    getPurchaseCountForCurrentWeek(){
+        return axios.get(BASE_EXPENSE_URL+'getPurchaseCountForCurrentWeek');
+    }
 }
 
 export default new Expense();

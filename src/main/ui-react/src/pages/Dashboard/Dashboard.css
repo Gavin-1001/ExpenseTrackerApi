@@ -26,14 +26,18 @@
     width: 300px;
     height: 200px;
     /*background-color: #ccc;*/
-    /*border: 1px solid mediumpurple;*/
-    padding: 10px;
+
+    padding: 10rem;
 }
 
 .child {
-    width: 100px;
+    width: 300px;
     height: 100px;
-    //background-color: inherit; {/*doesn't inherit anything */}
-    /*border: 1px solid mediumpurple;*/
-    margin: 10px;
+    align-items: center;
+    /*background-color: inherit; {!*doesn't inherit anything *!}*/
+
+
+    /*margin: 10px;*/
+    margin-left: 50px;
+
 }

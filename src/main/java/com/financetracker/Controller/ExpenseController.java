@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -86,15 +84,26 @@ public class ExpenseController {
         return expenseService.countExpenseInPreviousMonth();
     }
 
-    @GetMapping("/getCategoryCount")
-    public Map<String, Long> getCategoryCounts() {
-        return expenseService.getCategoryCounts();
-    }
 
     @GetMapping("/getPurchaseCountForCurrentWeek")
-    public long getPurchaseForCurrentWeek(){
-        return expenseService.getPurchaseCountForCurrentWeek();
-    }//doesn't work I think
+    public long getTotalAmountOfPurchasesForCurrentWeek() {
+        return expenseService.getTotalAmountOfPurchasesForCurrentWeek();
+    }
+
+    @GetMapping("/getTopPurchaseForCurrentWeek")
+    public Optional<Expense> getTopPurchaseForCurrentWeek(){
+        Optional<Expense> purchases = expenseService.getTopPurchaseForCurrentWeek();
+
+        if (purchases.isEmpty()) {
+            return Optional.empty();
+        }
+
+        Optional<Expense> highestExpense = purchases.stream()
+                .max(Comparator.comparing(Expense::getExpensePrice));
+
+        return highestExpense;
+    }
+    //This does not return the top expense, just throws an error "query did not return a unique result: +numberOfEntriesInDatabase"
 
 
 }

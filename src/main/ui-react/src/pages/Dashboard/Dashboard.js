@@ -10,6 +10,7 @@ const Dashboard = () => {
     const [count, setCount] = useState(null);
     const [countMonth, setCountMonth] = useState(null);
     const [errorMessage, setErrorMessage] = useState("")
+    const [countWeekly, setCountWeekly] = useState(null);
 
 
     useEffect(() => {
@@ -30,6 +31,15 @@ const Dashboard = () => {
                 console.error('Error fetching monthly expenses:', error);
                 setErrorMessage("Error fetching monthly expenses")
             });
+
+        ExpenseService.getPurchaseCountForCurrentWeek()
+            .then((response) => {
+                setCountWeekly(response.data);
+            }).catch((error) => {
+                console.log("Error fetching weekly data")
+            setErrorMessage("Error fetching weekly data")
+        });
+
     }, []);
 
 
@@ -41,9 +51,15 @@ const Dashboard = () => {
                 <div className="row row-cols-2 row-cols-lg-3">
 
                     <div className="col-5 col-xl-2 windows" style={{backgroundColor: "mediumpurple"}}>
-                        <div className={"child"} style={{backgroundColor: "mediumpurple"}}>
+                        <div className={"child"} style={{backgroundColor: "mediumpurple", fontSize: 12}}>
                             {/*Todo->_Have_the_left_div_with_current_week_metrics_but_put_as_two_smaller_divs_nested_in_bigger_div*/}
-                                Purchases by Week
+                            <h5>Purchases this week</h5>
+                            {count !== null ? (
+                                <p className={""}> {countWeekly}</p>
+                            ) : (
+                                <p>Loading...</p>
+                            )}
+
                             <div className="invalid-feedback">Purchase error</div>
                         </div>
                         <div className={"child"} style={{backgroundColor: "mediumpurple"}}>

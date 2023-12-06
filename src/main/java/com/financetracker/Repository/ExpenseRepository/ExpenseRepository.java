@@ -22,4 +22,7 @@ public interface ExpenseRepository extends JpaRepository<Expense, String> {
     Expense findTopByExpenseDateBetweenOrderByExpensePriceDesc(LocalDate startDateCurrentWeek, LocalDate endDateCurrentWeek);
 
     Optional<Expense> findAllByExpenseDateBetween(LocalDate startDate, LocalDate endDate);
+
+    List<Object[]> findByExpenseDateBetweenOrderByExpenseCategoryAsc(LocalDate startDate, LocalDate endDate);
+
 }

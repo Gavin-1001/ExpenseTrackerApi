@@ -106,4 +106,9 @@ public class ExpenseController {
     //This does not return the top expense, just throws an error "query did not return a unique result: +numberOfEntriesInDatabase"
 
 
+    @GetMapping("/getTopCategoryPurchase")
+    public String getHighestCategorySumForPreviousWeek() {
+        return expenseService.getHighestCategorySumForPreviousWeek();
+    }
+
 }

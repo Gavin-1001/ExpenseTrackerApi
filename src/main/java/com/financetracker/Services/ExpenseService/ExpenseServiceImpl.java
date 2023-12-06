@@ -229,6 +229,24 @@ public class ExpenseServiceImpl implements ExpenseService {
         return counts;
     }
 
+    @Override
+    public String getHighestCategorySumForPreviousWeek() {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate startDate = currentDate.minusDays(7);
+        LocalDate endDate = currentDate.minusDays(1);
+
+        List<Object[]> result = expenseRepository.findByExpenseDateBetweenOrderByExpenseCategoryAsc(startDate, endDate);
+
+        if (result.isEmpty()) {
+            return null; // Handle the case where there are no purchases for the previous week
+        }
+
+        // Get the highest category
+        String highestCategory = (String) result.get(result.size() - 1)[4];
+
+        return highestCategory;
+    }
+
 
 }
 

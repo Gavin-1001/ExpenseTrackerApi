@@ -11,6 +11,7 @@ const Dashboard = () => {
     const [countMonth, setCountMonth] = useState(null);
     const [errorMessage, setErrorMessage] = useState("")
     const [countWeekly, setCountWeekly] = useState(null);
+    const [categoryPurchase, setCategoryPurchase] = useState("")
 
 
     useEffect(() => {
@@ -64,7 +65,15 @@ const Dashboard = () => {
                         </div>
                         <div className={"child"} style={{backgroundColor: "mediumpurple"}}>
                             {/*Todo->_Have_the_left_div_with_current_week_metrics_but_put_as_two_smaller_divs_nested_in_bigger_div*/}
-                            Top Purchases this Week
+
+                            <h5>Purchases this week</h5>
+                            {count !== null ? (
+                                <p className={""}> {categoryPurchase}</p>
+                                /*This has been changed to display the category with the most amount of money in the purchase for a given week*/ 
+                            ) : (
+                                <p>Loading...</p>
+                            )}
+
                             <div className="invalid-feedback">Purchase error</div>
                         </div>
                     </div>

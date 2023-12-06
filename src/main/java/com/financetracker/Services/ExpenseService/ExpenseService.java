@@ -44,5 +44,7 @@ public interface ExpenseService {
 
 
     Optional<Expense> getTopPurchaseForCurrentWeek();
+
+    String getHighestCategorySumForPreviousWeek();
 }
 

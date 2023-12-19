@@ -5,7 +5,7 @@ import {AuthGuard} from "./AuthGuard/AuthGuard";
 import Login from "./pages/Login/Login";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import {Role} from "./common/modals/Role";
-import Sidebar from "./components/Navigation/Sidebar/Sidebar";
+
 import Settings from "./pages/Settings/Settings";
 import ExpenseForm from './pages/ExpenseForm/ExpenseForm';
 import Register from "./pages/Register/Register";
@@ -23,13 +23,23 @@ function App() {
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/logout" element={<Logout />} />
 
+                    <Route
+                        path="/home"
+                        element={
+                            <AuthGuard roles={[Role.USER]}>
+                                <>
+                                    <Home />
+                                </>
+                            </AuthGuard>
+                        }
+                    />
+
 
                     <Route
                         path="/"
                         element={
                             <AuthGuard roles={[Role.USER]}>
                             <>
-                                {/*<Sidebar/>*/}
                                 <Dashboard/>
                             </>
                             </AuthGuard>

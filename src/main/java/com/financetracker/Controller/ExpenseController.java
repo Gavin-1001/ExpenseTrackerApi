@@ -110,5 +110,4 @@ public class ExpenseController {
     public String getHighestCategorySumForPreviousWeek() {
         return expenseService.getHighestCategorySumForPreviousWeek();
     }
-
 }
